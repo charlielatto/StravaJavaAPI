@@ -24,7 +24,7 @@ public class StravaController {
     private StravaService stravaService;
     
     @RequestMapping("/test")
-    public String index() {
+    public @ResponseBody String index() {
         return "This is my Strava App";
     }
     
