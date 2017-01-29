@@ -32,8 +32,15 @@ and open the template in the editor.
                 });
             });
         </script>
+        <style>
+            button:hover {
+                cursor:pointer;
+            }
+        </style>
     </head>
     <body>
-        <button onclick="callStrava()" type="button">Connect With Strava</button>
+        <button onclick="callStrava()" style="border: 0; background: transparent" type="button">
+            <img  src="img/btn_strava_connectwith_orange@2x.png" alt="Connect with Strava" />
+        </button>
     </body>
 </html>
