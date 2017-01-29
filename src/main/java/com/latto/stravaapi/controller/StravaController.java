@@ -8,6 +8,7 @@ package com.latto.stravaapi.controller;
 import com.latto.stravaapi.service.StravaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,6 +43,16 @@ public class StravaController {
     @RequestMapping(value="/getAthlete", method=RequestMethod.GET)
     public @ResponseBody String getAthlete() {
         return stravaService.getAthlete();
+    }
+    
+    @RequestMapping(value="/getActivitesForYear/{year}", method=RequestMethod.GET)
+    public @ResponseBody String getYearActivites(@PathVariable int year) {
+        return stravaService.getYearActivites(year);
+    }
+    
+    @RequestMapping(value="/getActivitesForRange/{start}/{end}", method=RequestMethod.GET)
+    public @ResponseBody String getRangeActivites(@PathVariable String start,@PathVariable String end) {
+        return stravaService.getActivitesInDateRange(start,end);
     }
     
 }

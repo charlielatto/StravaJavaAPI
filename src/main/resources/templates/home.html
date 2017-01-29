@@ -2,8 +2,64 @@
 <html>
     <head>
         <title>Home</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script> 
+            
+            function year(){
+                var year = document.getElementById('year').value
+                $.ajax({
+                    url: "/getActivitesForYear/" + year,
+                    dataType: 'json',
+                    type: 'GET',
+                    success: function(data){
+                        console.log(data);
+                    },
+                    error: function(xhr,textStatus,errorThrown){
+                        console.log("error " + textStatus);
+                    }
+                });
+            }
+            
+            function range(){
+                var start = document.getElementById('start').value
+                var end = document.getElementById('end').value
+                $.ajax({
+                    url: '/getActivitesForRange/'+start+'/'+end,
+                    dataType: 'json',
+                    type: 'GET',
+                    success: function(data){
+                        console.log(data);
+                    },
+                    error: function(xhr,textStatus,errorThrown){
+                        console.log("error " + textStatus);
+                    }
+                });
+            }
+            
+            
+            $(document).ready(function(){
+                
+            });
+        </script>
     </head>
     <body>
-        <div>Home Page</div>
+        <div>
+            <form action='javascript:year(this)'>
+                Year:<br/>
+                <input id="year" type="text" name="year"/><br/>
+                 <input type="submit" value='Get Year Activities' />
+            </form>
+        </div>
+        
+        <br/>
+        <div>
+            <form action='javascript:range(this)'>
+                Start Date:<br/>
+                <input id="start" type="text" name="start"/><br />
+                End Date:<br/>
+                <input id="end" type="text" name="end"/><br />
+                <input type="submit" value='Get Range Activities' />
+            </form>
+        </div>
     </body>
 </html>
